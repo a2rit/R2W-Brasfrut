@@ -1,0 +1,4 @@
+*.InstallState
+*.InstallLog
+*.pdb
+*.log

@@ -1,0 +1,86 @@
+{
+  "name": "laravel/laravel",
+  "description": "The Laravel Framework.",
+  "keywords": [
+    "framework",
+    "laravel"
+  ],
+  "license": "MIT",
+  "type": "project",
+  "require": {
+    "php": ">=7.2.3",
+    "ext-bcmath": "*",
+    "ext-simplexml": "*",
+    "barryvdh/laravel-dompdf": "^0.8.3",
+    "barryvdh/laravel-ide-helper": "^2.4",
+    "barryvdh/laravel-snappy": "^0.4.6",
+    "caffeinated/modules": "^4.3.2",
+    "cossou/jasperphp": "^2.8",
+    "doctrine/dbal": "^2.6",
+    "fideloper/proxy": "~3.3",
+    "guzzlehttp/guzzle": "^7.8",
+    "haruncpi/laravel-log-reader": "^1.0",
+    "laravel/framework": "5.5.*",
+    "laravel/tinker": "~1.0",
+    "litiano/laravel-queue-for-windows": "^1.0",
+    "litiano/sap": "^2.6",
+    "mike42/escpos-php": "^2.1",
+    "nyholm/psr7": "^1.8",
+    "php-http/guzzle7-adapter": "^1.0",
+    "railsware/mailtrap-php": "^1.7",
+    "symfony/http-client": "^5.4"
+  },
+  "require-dev": {
+    "barryvdh/laravel-debugbar": "^3.2",
+    "filp/whoops": "~2.0",
+    "fzaninotto/faker": "~1.4",
+    "mockery/mockery": "~1.0",
+    "phpunit/phpunit": "~6.0",
+    "symfony/thanks": "^1.0"
+  },
+  "autoload": {
+    "classmap": [
+      "database/seeds",
+      "database/factories"
+    ],
+    "psr-4": {
+      "App\\": "app/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "dont-discover": [
+      ]
+    }
+  },
+  "scripts": {
+    "post-root-package-install": [
+      "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+    ],
+    "post-create-project-cmd": [
+      "@php artisan key:generate"
+    ],
+    "post-autoload-dump": [
+      "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+      "@php artisan package:discover",
+      "php artisan ide-helper:generate",
+      "php artisan ide-helper:meta",
+      "php artisan module:optimize"
+    ]
+  },
+  "config": {
+    "preferred-install": "dist",
+    "sort-packages": true,
+    "optimize-autoloader": true,
+    "allow-plugins": {
+      "kylekatarnls/update-helper": true,
+      "php-http/discovery": true,
+      "symfony/thanks": true
+    }
+  }
+}

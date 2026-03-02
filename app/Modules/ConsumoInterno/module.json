@@ -1,0 +1,7 @@
+{
+    "name": "ConsumoInterno",
+    "slug": "consumo-interno",
+    "version": "1.0",
+    "description": "This is the description for the ConsumoInterno module.",
+    "enabled": false
+}

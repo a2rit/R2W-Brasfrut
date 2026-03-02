@@ -1,0 +1,20 @@
+version: '3'
+services:
+  php:
+    build:
+      context: .docker/php
+    volumes:
+      - .:/laravel
+    working_dir: /laravel
+    ports:
+      - '83:83'
+  sqlsrv:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=1234Mudar#
+      - MSSQL_PID=Express
+    ports:
+      - "1433:1433"
+    volumes:
+      - ./.docker/sqlsrv/data:/var/opt/mssql

@@ -1,0 +1,3 @@
+Adicionar este comando no agendador de tarefas para reiniciar o Apache.
+
+powershell -Command " & {Get-Service Apache2.4 | Where-Object {$_.Status -eq 'Running'} | Restart-Service}"

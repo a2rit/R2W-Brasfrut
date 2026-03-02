@@ -1,0 +1,21 @@
+@import "./variables";
+
+
+
+$enable-ltr: true; /* stylelint-disable-line scss/dollar-variable-default */
+$enable-rtl: true; /* stylelint-disable-line scss/dollar-variable-default */
+
+@import "./bootstrap-select";
+@import "./daterangerpicker";
+// Import styles
+@import "~@coreui/coreui/scss/coreui";
+
+@import "./layout";
+@import "./custom";
+@import "./datatables";
+@import "./fixedColumnDatatable.scss";
+
+// Prism.js
+
+
+// If you want to add custom CSS you can put it here.

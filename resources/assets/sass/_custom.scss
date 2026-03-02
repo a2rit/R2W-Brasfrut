@@ -1,0 +1,244 @@
+// Here you can add other styles
+
+
+.table-default {
+    background-color: rgb(255, 255, 255) !important;
+}
+.btn-default {
+  border-color: #B1B7C1 !important;
+}
+
+.btn-primary {
+  color:rgb(255, 255, 255);
+}
+.btn-primary:hover {
+  color:rgb(255, 255, 255);
+}
+
+.size-1 {
+  width: 1em;
+}
+
+.size-2 {
+  width: 2em;
+}
+
+.size-3 {
+  width: 3em;
+}
+
+.size-4 {
+  width: 4em;
+}
+
+.size-5 {
+  width: 5em;
+}
+
+.disabled{
+  pointer-events: none;
+}
+
+.locked-color{
+  background-color: rgb(220, 223, 228); 
+}
+
+.locked {
+  background-color: rgb(220, 223, 228); 
+  pointer-events: none;
+}
+
+.zoom-cursor{
+  cursor: zoom-in;
+}
+
+[readonly], #container-loader, .locked {
+  cursor: auto;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+#container-loader{
+  background-color: rgba($color: #000, $alpha: 0.3);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 99999;
+}
+
+#loader,
+#loader:before,
+#loader:after {
+  border-radius: 50%;
+  width: 2.5em;
+  height: 2.5em;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation: load7 1.8s infinite ease-in-out;
+  animation: load7 1.8s infinite ease-in-out;
+}
+#loader {
+  color: $primary;
+  font-size: 10px;
+  text-indent: -9999em;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+  top: 50%;
+  left: 50%;
+  position: fixed;
+}
+
+#loader:before,
+#loader:after {
+  content: '';
+  position: absolute;
+  top: 0;
+}
+#loader:before {
+  left: -3.5em;
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+#loader:after {
+  left: 3.5em;
+}
+@-webkit-keyframes load7 {
+  0%,
+  80%,
+  100% {
+    box-shadow: 0 2.5em 0 -1.3em;
+  }
+  40% {
+    box-shadow: 0 2.5em 0 0;
+  }
+}
+@keyframes load7 {
+  0%,
+  80%,
+  100% {
+    box-shadow: 0 2.5em 0 -1.3em;
+  }
+  40% {
+    box-shadow: 0 2.5em 0 0;
+  }
+}
+
+.min-100{
+  width: 100%;
+  min-width: 100px;
+}
+
+.min-150{
+  width: 100%;
+  min-width: 150px;
+}
+
+.min-200{
+  width: 100%;
+  min-width: 200px;
+}
+
+.autocomplete-suggestions {
+  overflow: auto;
+  border: 1px solid #CBD3DD;
+  background: #FFF;
+  cursor: pointer;
+}
+
+.autocomplete-suggestions :hover {
+  background: rgb(231, 231, 231);
+}
+
+th{
+  font-weight: bold !important;
+}
+
+.autocomplete-suggestions {
+  border: 1px solid #999;
+  background: #FFF;
+  overflow: auto;
+}
+
+.autocomplete-suggestion {
+  padding: 2px 5px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.autocomplete-selected {
+  background: #F0F0F0;
+}
+
+.autocomplete-suggestions strong {
+  font-weight: normal;
+  color: #3399FF;
+}
+
+.autocomplete-suggestions {
+  width: 50vw !important;
+}
+
+.autocomplete-group {
+  padding: 2px 5px;
+}
+
+.autocomplete-group strong {
+  display: block;
+  border-bottom: 1px solid #000;
+}
+
+#sidebar-logo{
+  width: 30%;
+  height: 100%;
+}
+
+.sidebar-narrow-unfoldable #sidebar-logo{
+  width: 50%;
+  height: 100%;
+}
+
+.sidebar-narrow-unfoldable:hover #sidebar-logo{
+  width: 30%;
+  height: 100%;
+}
+
+
+/* width */
+.sidebar ::-webkit-scrollbar {
+  width: 10px;
+  -webkit-border-radius: 6px;
+}
+ 
+/* Handle */
+.sidebar ::-webkit-scrollbar-thumb {
+  background: rgba($color: #666565, $alpha: 0.3);
+  -webkit-border-radius: 6px;
+}
+
+.sidebar ::-webkit-scrollbar-track-piece  {
+	background-color: #0E1629;
+	-webkit-border-radius: 6px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+  -webkit-border-radius: 6px;
+}
+
+tbody tr > .dtfc-fixed-left,
+ tbody tr > .dtfc-fixed-right {
+  background-color: rgba($color: #000, $alpha: 0.6) !important;
+  color: rgb(255, 255, 255) !important;
+}
+
+body {
+  overflow: auto !important;
+}

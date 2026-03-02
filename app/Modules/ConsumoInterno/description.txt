@@ -1,0 +1,18 @@
+Segue escopo do projeto
+
+Criação de uma tela na plataforma R2W para lançamento do consumo interno do Iate Clube da Bahia, integrada ao SAP Business One, onde:
+
+Será criado uma tela CONSUMO INTERNO da plataforma R2W, os itens consumidos internamente pelo Iate Clube,
+onde após lançamento será executados os seguintes processos:
+
+1.1.0.Tela de lançamento dos itens consumidos (Deverá ser informado qual Ponto de Venda está sendo efetuado o consumo interno,
+podemos amarrar ao usuário)
+
+1.1.1.Transferencia do Estoque Remetente (Bar, Restaurante) para o Estoque Destino Consumo Interno;
+
+1.1.2.Diariamente será executado a geração de um Pedido de Venda com todas as transferências ocorridas do dia
+(Transferencia do Consumo Interno);
+
+Prazo de entrega: 20/11/2017
+
+campo de utilização, centro de custo e projeto
