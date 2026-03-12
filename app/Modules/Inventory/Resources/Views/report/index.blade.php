@@ -12,7 +12,7 @@
           <label for="">Categoria</label>
           <select id="report_type" class="form-control selectpicker">
             <option value="1">Relatório de contagem por grupo e listagem para contagem</option>
-            <option value="2">Relatório de perdas</option>
+            <!--<option value="2">Relatório de perdas</option>-->
           </select>
         </div>
         <hr>

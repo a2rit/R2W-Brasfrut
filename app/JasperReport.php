@@ -4,6 +4,7 @@ namespace App;
 
 use JasperPHP;
 use Exception;
+use Illuminate\Support\Facades\Log;
 
 class JasperReport
 {
@@ -29,9 +30,15 @@ class JasperReport
                 $data, // (Opcional) array de dados que serão enviados para o template
                 $this->getDatabaseConfig($database), // (Opcional) array de conexão com o banco de dados
                 $language, // (Opcional) linguagem utilizada. 
-            )->output();
+            )->execute();
 
-            dd(str_replace("^^^", '', $report));
+            Log::info($report);
+
+
+            //dd(str_replace("^^^", '', $report));
+
+            // Run this command to recompile .jrxml file and generate new jasper file:
+            // C:\xampp\htdocs\R2W-Yacht\vendor\cossou\jasperphp\src\JasperStarter\bin\jasperstarter compile C:\xampp\htdocs\R2W-Yacht\storage\app\public\relatorios_modelos\InventoryListToCount.jrxml
 
             $file = $output.'.'.$output_extension[0];
             
