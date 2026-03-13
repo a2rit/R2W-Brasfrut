@@ -56,18 +56,22 @@ use Illuminate\Support\Facades\Response;
 class Output extends Model
 {
     public function saveInDB($request)
-    {  
-        $this->code = $this->createCode();
-        $this->idUser = !empty($request->creator_user_id) ? $request->creator_user_id : auth()->user()->id;
-        $this->DocDate = $request->data;
-        $this->TaxDate = DATE('Y-m-d');
-        $this->description = $request->obsevacoes;
-        $this->is_locked = false;
-        $this->dbUpdate = '0';
-        $this->save();
-        foreach ($request->items as $key => $value) {
-            $item = new Item();
-            $item->saveInDB($value, $this->id);
+    {
+        try {
+            $this->code = $this->createCode();
+            $this->idUser = !empty($request->creator_user_id) ? $request->creator_user_id : auth()->user()->id;
+            $this->DocDate = $request->data;
+            $this->TaxDate = DATE('Y-m-d');
+            $this->description = $request->obsevacoes;
+            $this->is_locked = false;
+            $this->dbUpdate = '0';
+            $this->save();
+            foreach ($request->items as $key => $value) {
+                $item = new Item();
+                $item->saveInDB($value, $this->id);
+            }
+        } catch (\Exception $e) {
+            dd($e->getMessage());
         }
     }
 
@@ -118,7 +122,7 @@ class Output extends Model
                 $item->Lines->ProjectCode = (String)$value->projectCode;
                 $item->Lines->CostingCode = (String)$value->costCenter;
                 $item->Lines->CostingCode2 = (String)$value->costCenter2;
-                // $item->Lines->AccountCode = (String)$value->accountCode;
+                $item->Lines->AccountCode = (String)$value->accountCode;
                 $item->Lines->WarehouseCode = (String)$value->wareHouseCode;
                 $item->Lines->Add();
             }

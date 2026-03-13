@@ -62,7 +62,7 @@
                           <th>Centro de Custo</th>
                           <th>Centro de Custo2</th>
                           <th>Depósito</th>
-                          {{-- <th>Conta</th> --}}
+                          <th>Conta</th>
                           <th>Opções</th>
                         </tr>
                       </thead>
@@ -513,15 +513,17 @@
                     </option> 
                   @endForeach
                 </select>
+              </td>`));
 
-                <select class='form-control selectpicker visually-hidden' data-container='body' id='conta-${index}' name='items[${index}][conta]'>
-                  <option value=''>Selecione</option> 
-                  @foreach ($acct as $keys => $values) 
-                    <option value='{{ $values['value'] }}'> {{ $values['name'] }}</option> 
+          tr.append(
+            $(`<td>
+              <select class='form-control selectpicker' data-container='body' id='conta-${index}' name='items[${index}][conta]'>
+                  <option value=''>Selecione</option>
+                  +@foreach ($acct as $keys => $values)
+                    <option value='{{ $values['value'] }}'> {{ $values['name'] }}</option>
                   @endForeach
                 </select>
-
-              </td>`));
+            </td>`));
 
           tr.append($(`<td class='text-center'>
                                     <a class="text-danger" onclick='removeInArray("${items[i].ItemCode}");removeLinha(this);' type="button">
