@@ -57,11 +57,11 @@
                       <th style="width: 10%;">Quantidade</th>
                       <th style="width: 10%;">Preço Unit.</th>
                       <th style="width: 10%;">Total</th>
+                      <th style="width: 10%;">Depósito</th>
+                      <th style="width: 10%;">Conta</th>
                       <th style="width: 10%;">Projeto</th>
                       <th style="width: 10%;">C. de Custo</th>
                       <th style="width: 10%;">C. de Custo2</th>
-                      <th style="width: 10%;">Depósito</th>
-                      <th style="width: 10%;">Conta</th>
                       <th style="width: 8%;">Opções</th>
                     </tr>
                   </thead>
@@ -576,22 +576,6 @@
             ")' type='text' class='form-control money locked' name='items[" + items[i].ItemCode +
             "][total]' value='0'></td>"));
           tr.append($("<td>" +
-            "<select style='width: 250px;' class='form-control selectpicker' data-container='body' id='project-" +
-            index + "' name='items[" + items[i].ItemCode +
-            "][projectCode]' required > <option value=''>Selecione</option> @foreach ($projeto as $keys => $values) <option value='{{ $values['value'] }}'>{{ $values['value'] }} - {{ substr($values['name'], 0, 10) }}</option> @endForeach</select>" +
-            "</td>"));
-          tr.append($("<td>" +
-            "<select style='width: 250px;' class='form-control selectpicker' data-container='body' id='role-" +
-            index + "' name='items[" + items[i].ItemCode + "][costCenter]' required onchange='validLine(" +
-            index +
-            ");'> <option value=''>Selecione</option> @foreach ($centroCusto as $keys => $values) <option value='{{ $values['value'] }}'>{{ $values['value'] }} - {{ $values['name'] }}</option> @endForeach</select>" +
-            "</td>"));
-          tr.append($("<td>" +
-            "<select style='width: 250px;' class='form-control selectpicker' data-container='body' id='role2-" +
-            index + "' name='items[" + items[i].ItemCode +
-            "][costCenter2]' > <option value=''>Selecione</option> @foreach ($centroCusto2 as $keys => $values) <option value='{{ $values['value'] }}'>{{ $values['value'] }} - {{ $values['name'] }}</option> @endForeach</select>" +
-            "</td>"));
-          tr.append($("<td>" +
             "<select style='width: 250px;' class='form-control selectpicker' data-container='body' id='whs-" +
             index + "' name='items[" + items[i].ItemCode + "][whsCode]' required onchange='setContaLine(" +
             index +
@@ -601,6 +585,22 @@
             "<select style='width: 250px;' class='form-control selectpicker' data-container='body' id='conta-" +
             index + "' name='items[" + items[i].ItemCode +
             "][account]' required > <option value=''>Selecione</option> @foreach ($acct as $keys => $values) <option value='{{ $values['value'] }}'>{{ $values['name'] }}</option> @endForeach</select>" +
+            "</td>"));
+          tr.append($("<td>" +
+            "<select style='width: 250px;' class='form-control selectpicker' data-container='body' id='project-" +
+            index + "' name='items[" + items[i].ItemCode +
+            "][projectCode]' required > <option value='{{ $projeto[0]['value'] }}'>Selecione</option> @foreach ($projeto as $keys => $values) <option value='{{ $values['value'] }}'>{{ $values['value'] }} - {{ substr($values['name'], 0, 10) }}</option> @endForeach</select>" +
+            "</td>"));
+          tr.append($("<td>" +
+            "<select style='width: 250px;' class='form-control selectpicker' data-container='body' id='role-" +
+            index + "' name='items[" + items[i].ItemCode + "][costCenter]' required onchange='validLine(" +
+            index +
+            ");'> <option value='{{ $centroCusto[0]['value'] }}'>Selecione</option> @foreach ($centroCusto as $keys => $values) <option value='{{ $values['value'] }}'>{{ $values['value'] }} - {{ $values['name'] }}</option> @endForeach</select>" +
+            "</td>"));
+          tr.append($("<td>" +
+            "<select style='width: 250px;' class='form-control selectpicker' data-container='body' id='role2-" +
+            index + "' name='items[" + items[i].ItemCode +
+            "][costCenter2]' > <option value=''>Selecione</option> @foreach ($centroCusto2 as $keys => $values) <option value='{{ $values['value'] }}'>{{ $values['value'] }} - {{ $values['name'] }}</option> @endForeach</select>" +
             "</td>"));
 
           tr.append($(`<td class='text-center'>

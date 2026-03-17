@@ -58,11 +58,11 @@
                           <th>Quantidade</th>
                           <th>Preço Unitário</th>
                           <th>Total</th>
+                          <th>Depósito</th>
+                          <th>Conta</th>
                           <th>Projeto</th>
                           <th>Centro de Custo</th>
                           <th>Centro de Custo2</th>
-                          <th>Depósito</th>
-                          <th>Conta</th>
                           <th>Opções</th>
                         </tr>
                       </thead>
@@ -486,22 +486,6 @@
             "'  onclick='destroyMask(event)' onblur='setMaskMoney();gerarTotal(" + index +
             ");focusBlur(event)' type='text' class='form-control min-100' readonly name='items[" + index +
             "][total]'></td>"));
-          tr.append($("<td>" +
-            "<select class='form-control selectpicker' data-container='body' id='project-" + index +
-            "' name='items[" + index +
-            "][projectCode]' required > <option value=''>Selecione</option> @foreach ($projeto as $keys => $values) <option value='{{ $values['value'] }}'>{{ $values['value'] }} - {{ substr($values['name'], 0, 10) }}</option> @endForeach</select>" +
-            "</td>"));
-          tr.append($("<td>" +
-            "<select class='form-control selectpicker' data-container='body' id='role-" + index +
-            "' name='items[" +
-            index + "][centroCusto]' required onchange='validLine(" + index +
-            ");'> <option value=''>Selecione</option> @foreach ($centroCusto as $keys => $values) <option value='{{ $values['value'] }}'>{{ $values['value'] }} - {{ $values['name'] }}</option> @endForeach</select>" +
-            "</td>"));
-          tr.append($("<td>" +
-            "<select selectpicker' class='form-control selectpicker' data-container='body' id='role2-" + index +
-            "' name='items[" + index +
-            "][centroCusto2]' > <option value=''>Selecione</option> @foreach ($centroCusto2 as $keys => $values) <option value='{{ $values['value'] }}'>{{ $values['value'] }} - {{ $values['name'] }}</option> @endForeach</select>" +
-            "</td>"));
 
           tr.append(
             $(`<td>
@@ -524,6 +508,22 @@
                   @endForeach
                 </select>
             </td>`));
+          tr.append($("<td>" +
+            "<select class='form-control selectpicker' data-container='body' id='project-" + index +
+            "' name='items[" + index +
+            "][projectCode]' required > <option value='{{ $projeto[0]['value'] }}'>Selecione</option> @foreach ($projeto as $keys => $values) <option value='{{ $values['value'] }}'>{{ $values['value'] }} - {{ substr($values['name'], 0, 10) }}</option> @endForeach</select>" +
+            "</td>"));
+          tr.append($("<td>" +
+            "<select class='form-control selectpicker' data-container='body' id='role-" + index +
+            "' name='items[" +
+            index + "][centroCusto]' required onchange='validLine(" + index +
+            ");'> <option value='{{ $centroCusto[0]['value'] }}'>Selecione</option> @foreach ($centroCusto as $keys => $values) <option value='{{ $values['value'] }}'>{{ $values['value'] }} - {{ $values['name'] }}</option> @endForeach</select>" +
+            "</td>"));
+          tr.append($("<td>" +
+            "<select selectpicker' class='form-control selectpicker' data-container='body' id='role2-" + index +
+            "' name='items[" + index +
+            "][centroCusto2]' > <option value=''>Selecione</option> @foreach ($centroCusto2 as $keys => $values) <option value='{{ $values['value'] }}'>{{ $values['value'] }} - {{ $values['name'] }}</option> @endForeach</select>" +
+            "</td>"));
 
           tr.append($(`<td class='text-center'>
                                     <a class="text-danger" onclick='removeInArray("${items[i].ItemCode}");removeLinha(this);' type="button">
