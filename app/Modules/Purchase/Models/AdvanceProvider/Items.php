@@ -27,15 +27,21 @@ class Items extends Model
     }
 
     public function saveInDB($idAdvanceProvider, $value){
-        $this->idAdvanceProvider = $idAdvanceProvider;
-        $this->itemCode = $value['itemCode'];
-        $this->itemName = $value['itemName'];
-        $this->itemUnd = $value['itemUnd'];
-        $this->quantity = is_numeric($value['qtd']) ? $value['qtd'] : clearNumberDouble($value['qtd']);
-        $this->price = is_numeric($value['preco']) ? $value['preco'] : clearNumberDouble($value['preco']);
-        $this->project = $value['projeto'];
-        $this->distrRule = $value['costCenter'];
-        $this->distrRule2 = $value['costCenter2'] ?? '';
-        $this->save();
+        try {
+            $this->idAdvanceProvider = $idAdvanceProvider;
+            $this->itemCode = $value['itemCode'];
+            $this->itemName = $value['itemName'];
+            $this->itemUnd = $value['itemUnd'];
+            $this->quantity = is_numeric($value['qtd']) ? $value['qtd'] : clearNumberDouble($value['qtd']);
+            $this->price = is_numeric($value['preco']) ? $value['preco'] : clearNumberDouble($value['preco']);
+            $this->project = $value['projeto'];
+            $this->distrRule = $value['costCenter'];
+            $this->distrRule2 = $value['costCenter2'] ?? '';
+            $this->save();
+        } catch (\Throwable $e) {
+            dd($e->getMessage());
+            $logsError = new LogsError();
+            $logsError->saveInDB('APE0001', $e->getFile() . ' | ' . $e->getLine(), $e->getMessage());
+        }
     }
 }

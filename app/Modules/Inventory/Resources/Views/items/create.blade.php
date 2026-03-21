@@ -17,7 +17,7 @@
     {!! csrf_field() !!}
     <div class="container-fluid">
       <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-4">
           <div class="form-group">
             <label>Série de numeração</label>
             <select class="form-control selectpicker" id="numberSeries" name="numberSeries">
@@ -27,9 +27,14 @@
             </select>
           </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-4">
           <div class="form-group"><label>Nome</label>
             <input type="text" maxlength="100" placeholder="Nome" name="name" class="form-control" required>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group"><label>Nome estrangeiro</label>
+            <input type="text" maxlength="100" placeholder="Nome estrangeiro" name="foreign_name" class="form-control">
           </div>
         </div>
         <div class="col-md-3">
@@ -63,7 +68,7 @@
             </select>
           </div>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-3">
           <div class="form-group">
             <label>Item de estoque</label>
             <select class="form-control selectpicker" name="is_inventory_item">

@@ -100,6 +100,7 @@ class AdvanceProvider extends Model
                 }
             }
         } catch (\Throwable $e) {
+            dd($e->getMessage());
             $logsError = new LogsError();
             $logsError->saveInDB('APE0001', $e->getFile() . ' | ' . $e->getLine(), $e->getMessage());
         }
