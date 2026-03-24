@@ -45,10 +45,16 @@
               value="@if ($item->validFor == 'Y') ATIVO @elseif($item->validFor == 'N') INATIVO @endif"
               disabled>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-3">
             <div class="form-group"><label>Nome</label>
               <input type="text" maxlength="100" required placeholder="Nome" name="name" class="form-control"
                 value="{{ $item->ItemName }}">
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group"><label>Nome estrangeiro</label>
+              <input type="text" maxlength="100" placeholder="Nome estrangeiro" name="foreign_name" class="form-control"
+              value="{{ $item->FrgnName }}">
             </div>
           </div>
           <div class="col-md-3">

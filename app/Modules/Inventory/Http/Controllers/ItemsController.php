@@ -73,6 +73,7 @@ class ItemsController extends Controller
                 "NCMCode",
                 "CardCode",
                 "ItemName",
+                "FrgnName",
                 "ItmsGrpCod",
                 "FirmCode",
                 "ItemType",

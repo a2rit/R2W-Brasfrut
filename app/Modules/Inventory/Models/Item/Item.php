@@ -330,6 +330,7 @@ class Item extends Model
             }
 
             $item->ItemName = (string)$obj->name;
+            $item->ForeignName = (string)$obj->foreign_name;
             $item->ItemsGroupCode = (int)$obj->group;
             $item->Manufacturer = $obj->subGroup;
             $item->ItemType = (int)$obj->type;
