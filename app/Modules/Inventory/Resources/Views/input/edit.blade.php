@@ -143,6 +143,31 @@
 
                           <td>
                             <select style='width: 150px;' class='form-control selectpicker' data-container="body"
+                              id="whs-{{ $value['id'] }}" onchange="setContaLine({{ $value['id'] }})"
+                              name='items[{{ $value['id'] }}][whsCode]' @if ($head->is_locked == 0)  @endif>
+                              <option></option>
+                              @foreach ($warehouses as $keys => $values)
+                                <option value="{{ $values['value'] }}"
+                                  @if ($values['value'] == $value['wareHouseCode']) selected @endif>{{ $values['value'] }} -
+                                  {{ $values['name'] }}</option>
+                              @endForeach
+                            </select>
+                          </td>
+
+                          <td>
+                            <select style='width: 150px;' class='form-control selectpicker' data-container="body"
+                              name='items[{{ $value['id'] }}][account]' id="conta-{{ $value['id'] }}"
+                              @if ($head->is_locked == 0)  @endif>
+                              <option></option>
+                              @foreach ($acct as $keys => $values)
+                                <option value="{{ $values['value'] }}"
+                                  @if ($values['value'] == $value['accountCode']) selected @endif>{{ $values['name'] }}</option>
+                              @endForeach
+                            </select>
+                          </td>
+                          
+                          <td>
+                            <select style='width: 150px;' class='form-control selectpicker' data-container="body"
                               name='items[{{ $value['id'] }}][projectCode]' @if ($head->is_locked == 0)  @endif>
                               <option></option>
                               @foreach ($projeto as $keys => $values)
@@ -177,29 +202,8 @@
                               @endForeach
                             </select>
                           </td>
-                          <td>
-                            <select style='width: 150px;' class='form-control selectpicker' data-container="body"
-                              id="whs-{{ $value['id'] }}" onchange="setContaLine({{ $value['id'] }})"
-                              name='items[{{ $value['id'] }}][whsCode]' @if ($head->is_locked == 0)  @endif>
-                              <option></option>
-                              @foreach ($warehouses as $keys => $values)
-                                <option value="{{ $values['value'] }}"
-                                  @if ($values['value'] == $value['wareHouseCode']) selected @endif>{{ $values['value'] }} -
-                                  {{ $values['name'] }}</option>
-                              @endForeach
-                            </select>
-                          </td>
-                          <td>
-                            <select style='width: 150px;' class='form-control selectpicker' data-container="body"
-                              name='items[{{ $value['id'] }}][account]' id="conta-{{ $value['id'] }}"
-                              @if ($head->is_locked == 0)  @endif>
-                              <option></option>
-                              @foreach ($acct as $keys => $values)
-                                <option value="{{ $values['value'] }}"
-                                  @if ($values['value'] == $value['accountCode']) selected @endif>{{ $values['name'] }}</option>
-                              @endForeach
-                            </select>
-                          </td>
+                          
+                      
                           @if (empty($head->codSAP))
                             <td class="text-center">
                               <a class="text-danger"

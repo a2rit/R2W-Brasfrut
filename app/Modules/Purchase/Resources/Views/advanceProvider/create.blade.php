@@ -92,8 +92,12 @@
                 @if (isset($head)) readonly @endif>
                 <option value=''>Selecione</option>
                 @foreach ($paymentConditions as $key => $value)
-                  <option value="{{ $value['GroupNum'] }}" @if (isset($head['paymentCondition']) && $head['paymentCondition'] == $value['GroupNum']) selected @endif>
-                    {{ $value['PymntGroup'] }}</option>
+                  <option value="{{ $value['GroupNum'] }}" 
+                  @if (isset($head['paymentCondition']) && $head['paymentCondition'] == $value['GroupNum']) selected
+                  @elseif (!isset($head['paymentCondition']) && $value['GroupNum'] == '-1') selected
+                  @endif>
+                    {{ $value['PymntGroup'] }}
+                  </option>
                 @endForeach
               </select>
             </div>
