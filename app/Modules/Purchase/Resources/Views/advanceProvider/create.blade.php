@@ -53,9 +53,17 @@
               @endif
             </select>
           </div>
+          <div class="col-md-2">
+            <label>Veículo</label>
+            <input type="text" name="veiculo" @if(isset($head)) value="{{ $head->veiculo }}"@endif class="form-control">
+          </div>
+          <div class="col-md-2">
+            <label>N° do Ticket</label>
+            <input type="number" name="ticket" @if(isset($head)) value="{{ $head->ticket }}"@endif class="form-control">
+          </div>
         </div>
         <div class="row mt-2">
-          <div class="col-md-2">
+          <div class="col-md-3">
             <div class="form-group">
               <label>Data do Documento</label>
               <input name="dataDocumento" id="dataDocumento" class="form-control"
@@ -64,7 +72,7 @@
                 required>
             </div>
           </div>
-          <div class="col-md-2">
+          <div class="col-md-3">
             <div class="form-group">
               <label>Data de Lançamento</label>
               <input name="dataLancamento" class="form-control"
@@ -73,7 +81,7 @@
                 required>
             </div>
           </div>
-          <div class="col-md-2">
+          <div class="col-md-3">
             <div class="form-group">
               <label>Data de vencimento</label>
               <input name="dataVencimento" id="dataVencimento" class="form-control"

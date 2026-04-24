@@ -82,6 +82,8 @@ class AdvanceProvider extends Model
             $this->docTotal = is_numeric($request['totalSemDesconto']) ? $request['totalSemDesconto'] : clearNumberDouble($request['totalSemDesconto']);
             $this->paymentForm = '';
             $this->status = 1;
+            $this->veiculo = $request['veiculo'];
+            $this->ticket = $request['ticket'];
 
             if ($this->dpmTotal > 0) {
                 $this->dpmPrcnt = $this->dpmTotal / $this->docTotal;
@@ -213,6 +215,8 @@ class AdvanceProvider extends Model
             //$ap->UserFields->fields->Item("U_R2W_CODE")->value =  $obj->code;
             $ap->UserFields->fields->Item("U_R2W_USERNAME")->value = getUserName($obj->idUser);
             $ap->UserFields->fields->Item("U_R2W_CODE")->value = $obj->code;
+            $ap->UserFields->fields->Item("U_R2W_Veiculo")->value = $obj->veiculo;
+            $ap->UserFields->fields->Item("U_NTicket")->value = $obj->ticket;
 
             if ($update) {
                 $ret = $ap->Update();

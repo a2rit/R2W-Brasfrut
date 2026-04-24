@@ -48,7 +48,7 @@ class AdvanceProviderController extends Controller
             ->join('users', 'advance_provider.idUser', '=', 'users.id')
             ->whereBetween('taxDate', [Carbon::now()->subYear(), Carbon::now()])->get();
         $ODPO = new AdvanceProvider;
-        $items = $items->orderBy('advance_provider.taxDate', 'desc')->paginate(30);
+        $items = $items->orderBy('advance_provider.id', 'desc')->paginate(30);
     
         return view('purchase::advanceProvider.index', compact('items', 'buscaGraph', 'ODPO'));
     }
@@ -126,7 +126,8 @@ class AdvanceProviderController extends Controller
     public function read($id)
     {
         
-        $head = AdvanceProvider::select("advance_provider.id",
+        $head = AdvanceProvider::select(
+                "advance_provider.id",
                 'codSAP',
                 'advance_provider.cardCode',
                 'code',
@@ -141,7 +142,10 @@ class AdvanceProviderController extends Controller
                 'is_locked',
                 'dpmPrcnt',
                 'T2.CardName',
-                'docTotal')
+                'docTotal',
+                'veiculo',
+                'ticket'
+            )
             ->leftJoin('SAPHOMOLOGACAO.dbo.OCRD as T2', 'T2.CardCode', '=', 'advance_provider.cardCode')
             ->join('users', 'advance_provider.idUser', '=', 'users.id')
             ->find($id);

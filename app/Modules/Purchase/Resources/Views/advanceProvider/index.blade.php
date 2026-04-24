@@ -123,7 +123,7 @@
       <table id="requiredTable" class="table table-default table-striped table-bordered table-hover dataTables-example">
         <thead>
           <tr>
-            <th style="width: 5%;" class="text-center">#</th>
+            <th style="width: 5%;" class="text-center">id</th>
             <th style="width: 10%;">Cod. SAP</th>
             <th style="width: 10%;">Cod. WEB</th>
             <th style="width: 20%;">Usuário</th>
@@ -138,7 +138,7 @@
             <?php $cont = 1; ?>
             @foreach ($items as $key => $value)
               <tr value="{{ $value->codSAP }}">
-                <td class="text-center">{{ $key+1 }}</td>
+                <td class="text-center">{{ $value->id }}</td>
                 <td class="text-center">
                   {{ $value->codSAP }}
                 </td>
