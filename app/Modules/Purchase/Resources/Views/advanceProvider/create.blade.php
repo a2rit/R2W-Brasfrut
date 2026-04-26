@@ -944,11 +944,11 @@
           tr.append($("<td >" +
             "<select class='form-control selectpicker' id='project-" + index + "' name='requiredProducts[" +
             index +
-            "][projeto]' data-container='body'  required > <option value=''>Selecione</option> @foreach ($projeto as $keys => $values) <option value='{{ $values['value'] }}'>{{ $values['value'] }} - {{ $values['name'] }}</option> @endForeach</select>" +
+            "][projeto]' data-container='body'> <option value=''>Selecione</option> @foreach ($projeto as $keys => $values) <option value='{{ $values['value'] }}'>{{ $values['value'] }} - {{ $values['name'] }}</option> @endForeach</select>" +
             "</td>"));
           tr.append($("<td >" +
             "<select class='form-control selectpicker' id='role-" + index + "' name='requiredProducts[" +
-            index + "][costCenter]' data-container='body'  required onchange='validLine(" + index +
+            index + "][costCenter]' data-container='body' onchange='validLine(" + index +
             ");' > <option value=''>Selecione</option> @foreach ($centroCusto as $keys => $values) <option value='{{ $values['value'] }}'>{{ $values['value'] }} - {{ $values['name'] }}</option> @endForeach</select>" +
             "</td>"));
           tr.append($("<td >" +
