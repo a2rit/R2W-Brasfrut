@@ -161,6 +161,7 @@
                             {{ $cont }}
                           </td>
                           <td style="max-width: 16em;">
+                            @if(isset($value->itemCode))
                             <div class="d-flex flex-row" style="max-width: 100%;">
                               <a class="text-warning" href="{{ route('inventory.items.edit', $value->itemCode) }}"
                                 target="_blank">
@@ -172,6 +173,7 @@
                                 title="{{ $value->itemCode }} - {{ $value->itemName }}">{{ $value->itemCode }} -
                                 {{ $value->itemName }}</span>
                             </div>
+                            @endif
                             <input type='hidden' value="{{ $value->itemName }}"
                               name="requiredProducts[{{ $cont }}][itemName]">
                             <input type='hidden' value="{{ $value->itemCode }}"

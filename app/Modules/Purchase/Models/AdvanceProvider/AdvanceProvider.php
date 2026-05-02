@@ -76,7 +76,7 @@ class AdvanceProvider extends Model
             $this->docDueDate = $request['dataVencimento'];
             $this->taxDate = $request['dataLancamento'];
             $this->idUser = auth()->user()->id;
-            $this->comments = mb_convert_encoding((string)$request['observacoes'], 'UTF-8');
+            $this->comments = "Placa:" . $request['veiculo']. PHP_EOL . "Ticket: " . $request['ticket'];
             $this->paymentCondition = $request['condPagamentos'];
             $this->dpmTotal = is_numeric($request['totalAdiantado']) ? $request['totalAdiantado'] : clearNumberDouble($request['totalAdiantado']);
             $this->docTotal = is_numeric($request['totalSemDesconto']) ? $request['totalSemDesconto'] : clearNumberDouble($request['totalSemDesconto']);
@@ -191,7 +191,7 @@ class AdvanceProvider extends Model
             $ap->CardCode = $obj->cardCode;
             $ap->DownPaymentType = DownPaymentTypeEnum::dptInvoice;
             $ap->PaymentGroupCode = $obj->paymentCondition;
-            $ap->Comments =  'Adiantamento de fornecedor WEB: ' . $obj->code . ' - ' . $obj->comments;
+            $ap->Comments =  $obj->comments . PHP_EOL . 'Nr Autorização: ' . $obj->code;
             $ap->DocTotal = (float)(float)$obj->dpmTotal;
 
             $line = 0;
