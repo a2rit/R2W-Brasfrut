@@ -156,6 +156,7 @@
                     @if (isset($body))
                       <?php $cont = 1; ?>
                       @foreach ($body as $key => $value)
+                        @if(isset($item))
                         <tr id="rowTable-{{ $cont }}">
                           <td>
                             {{ $cont }}
@@ -254,6 +255,7 @@
                           @endif
                           <?php $cont++; ?>
                         </tr>
+                        @endif
                       @endforeach
                       <input type="hidden" value="{{ $cont - 1 }}" id="cont">
                     @endif
