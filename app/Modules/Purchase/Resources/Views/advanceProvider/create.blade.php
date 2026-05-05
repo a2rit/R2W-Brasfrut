@@ -119,9 +119,11 @@
           <li class="nav-item" role="presentation" data-coreui-toggle="tab" data-coreui-target="#tab-1">
             <a class="nav-link active" data-toggle="tab" href="#tab-1">Geral</a>
           </li>
+          <!--
           <li class="nav-item" role="presentation" data-coreui-toggle="tab" data-coreui-target="#tab-3">
             <a class="nav-link" data-toggle="tab" href="#tab-3">Pagamento</a>
           </li>
+          -->
           <li class="nav-item" role="presentation" data-coreui-toggle="tab" data-coreui-target="#tab-2">
             <a class="nav-link" data-toggle="tab" href="#tab-2">Anexos</a>
           </li>
@@ -156,7 +158,7 @@
                     @if (isset($body))
                       <?php $cont = 1; ?>
                       @foreach ($body as $key => $value)
-                        @if(isset($item))
+                        @if(isset($value))
                         <tr id="rowTable-{{ $cont }}">
                           <td>
                             {{ $cont }}

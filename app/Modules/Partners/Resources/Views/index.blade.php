@@ -8,6 +8,7 @@
     <div class="col-md-10">
       <h3 class="header-page">Lista de parceiros de negócios</h3>
     </div>
+    <!--
     <div class="col-md-2">
       <div class="dropdown float-end">
         <button class="btn btn-dark dropdown-toggle" type="button" data-coreui-toggle="dropdown" aria-expanded="false">
@@ -21,6 +22,7 @@
         </ul>
       </div>
     </div>
+    -->
   </div>
   <hr>
 
