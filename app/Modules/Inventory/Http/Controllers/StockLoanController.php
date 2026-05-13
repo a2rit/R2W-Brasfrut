@@ -30,8 +30,8 @@ class StockLoanController extends Controller{
                   'id_stockLoan','requester','returner','taxDate','code','codSAP',
                   'T1.WhsName as fromWarehouse', 'T2.WhsName as toWarehouse', 'comments','is_locked','message')
               ->join('users', 'users.id', '=', 'stock_loans.idUser')
-              ->join('SAPHOMOLOGACAO.dbo.OWHS as T1', 'T1.WhsCode', '=', 'stock_loans.fromWarehouse')
-              ->join('SAPHOMOLOGACAO.dbo.OWHS as T2', 'T2.WhsCode', '=', 'stock_loans.toWarehouse')
+              ->join('BRASFRUT.dbo.OWHS as T1', 'T1.WhsCode', '=', 'stock_loans.fromWarehouse')
+              ->join('BRASFRUT.dbo.OWHS as T2', 'T2.WhsCode', '=', 'stock_loans.toWarehouse')
               ->orderBy('stock_loans.id', 'desc')
               ->paginate(30);
 
@@ -193,7 +193,7 @@ class StockLoanController extends Controller{
       $historic = DB::SELECT("SELECT T0.*, T1.itemCode, T3.ItemName
                               FROM stock_loans_historics T0
                               INNER JOIN stock_loans_items T1 ON T1.id = T0.idItem
-                              INNER JOIN [SAPHOMOLOGACAO].[dbo].[OITM] T3 ON T3.ItemCode = T1.itemCode
+                              INNER JOIN [BRASFRUT].[dbo].[OITM] T3 ON T3.ItemCode = T1.itemCode
                               WHERE T0.idStockLoan = :id
                               ORDER BY T0.created_at", ['id' => $id]);
     
@@ -388,8 +388,8 @@ class StockLoanController extends Controller{
                 END  AS docStatus
                 FROM stock_loans as T0
                 JOIN users T1 on T0.idUser = T1.id
-                LEFT JOIN [SAPHOMOLOGACAO].[dbo].[OHEM] T2 on T0.requester = T2.empID
-                LEFT JOIN [SAPHOMOLOGACAO].[dbo].[OHEM] T3 on T0.returner = T3.empID
+                LEFT JOIN [BRASFRUT].[dbo].[OHEM] T2 on T0.requester = T2.empID
+                LEFT JOIN [BRASFRUT].[dbo].[OHEM] T3 on T0.returner = T3.empID
                 where T0.id != '-1'";
                 
                 if (!is_null($request->code)) {
@@ -546,8 +546,8 @@ class StockLoanController extends Controller{
                 END  AS docStatus
                 FROM stock_loans as T0
                 JOIN users T1 on T0.idUser = T1.id
-                LEFT JOIN [SAPHOMOLOGACAO].[dbo].[OHEM] T2 on T0.requester = T2.empID
-                LEFT JOIN [SAPHOMOLOGACAO].[dbo].[OHEM] T3 on T0.returner = T3.empID
+                LEFT JOIN [BRASFRUT].[dbo].[OHEM] T2 on T0.requester = T2.empID
+                LEFT JOIN [BRASFRUT].[dbo].[OHEM] T3 on T0.returner = T3.empID
                 where T0.id != '-1'";
 
         $sql.= " order by solicitante_firstName ";

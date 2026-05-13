@@ -30,14 +30,14 @@ class StockReportController extends Controller{
         $warehouses = DB::select("SELECT  DISTINCT 
                                     T2.[WhsCode],
                                     T3.[WhsName]
-                                FROM [SAPHOMOLOGACAO].[dbo].[OITW] T2   
-                                INNER JOIN [SAPHOMOLOGACAO].[dbo].[OWHS] T3 ON T2.[WhsCode] = T3.[WhsCode]");
+                                FROM [BRASFRUT].[dbo].[OITW] T2   
+                                INNER JOIN [BRASFRUT].[dbo].[OWHS] T3 ON T2.[WhsCode] = T3.[WhsCode]");
 
         $groups = DB::select("SELECT DISTINCT
                                 T0.[ItmsGrpCod],
                                 T1.[ItmsGrpNam]
-                            FROM [SAPHOMOLOGACAO].[dbo].[OITM] T0
-                            INNER JOIN [SAPHOMOLOGACAO].[dbo].[OITB] T1 ON T0.[ItmsGrpCod] = T1.[ItmsGrpCod]");
+                            FROM [BRASFRUT].[dbo].[OITM] T0
+                            INNER JOIN [BRASFRUT].[dbo].[OITB] T1 ON T0.[ItmsGrpCod] = T1.[ItmsGrpCod]");
 
         $itemProperties = $sap->getDb()->table('OITG')->select('ItmsTypCod as value', 'ItmsGrpNam as name')->get();
 

@@ -104,10 +104,10 @@ class InvoiceController extends Controller
         $items = DB::SELECT("SELECT T0.itemCode, T0.itemName, T0.quantity, T0.price, T0.lineSum,
                             T0.codCFOP, T0.codProject, T2.OcrName as distrRule, T3.OcrName as distriRule2, T4.Descr
                         FROM incoing_invoice_items T0
-                        LEFT JOIN SAPHOMOLOGACAO.dbo.OITM T1 ON T0.itemCode = T1.ItemCode
-                        LEFT JOIN SAPHOMOLOGACAO.dbo.OOCR T2 ON T0.costCenter = T2.OcrCode
-                        LEFT JOIN SAPHOMOLOGACAO.dbo.OOCR T3 ON T0.costCenter2 = T3.OcrCode
-                        LEFT JOIN SAPHOMOLOGACAO.dbo.OUSG T4 ON T0.codUse = T4.id
+                        LEFT JOIN BRASFRUT.dbo.OITM T1 ON T0.itemCode = T1.ItemCode
+                        LEFT JOIN BRASFRUT.dbo.OOCR T2 ON T0.costCenter = T2.OcrCode
+                        LEFT JOIN BRASFRUT.dbo.OOCR T3 ON T0.costCenter2 = T3.OcrCode
+                        LEFT JOIN BRASFRUT.dbo.OUSG T4 ON T0.codUse = T4.id
                         WHERE T0.idIncoingInvoice = '{$id}'");
 
         return json_encode([

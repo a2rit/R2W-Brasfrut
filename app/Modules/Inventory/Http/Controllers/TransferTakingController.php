@@ -35,8 +35,8 @@ class TransferTakingController extends Controller{
     public function index(){
       $items = TransferTaking::with(['transfers'])
                 ->join('users', 'users.id', '=', 'transfersTaking.idUser')
-                ->join('SAPHOMOLOGACAO.dbo.OWHS as T1', 'T1.WhsCode', '=', 'transfersTaking.fromWarehouse')
-                ->join('SAPHOMOLOGACAO.dbo.OWHS as T2', 'T2.WhsCode', '=', 'transfersTaking.toWarehouse')
+                ->join('BRASFRUT.dbo.OWHS as T1', 'T1.WhsCode', '=', 'transfersTaking.fromWarehouse')
+                ->join('BRASFRUT.dbo.OWHS as T2', 'T2.WhsCode', '=', 'transfersTaking.toWarehouse')
                 ->select('transfersTaking.id', 'users.name', 'idTransf', 'codSAPTransf', 'codWEBTransf', 'status', 'docDate', 'taxDate', 'code', 
                           'codSAP', 'T1.WhsName as fromWarehouse', 'T2.WhsName as toWarehouse', 'comments', 'is_locked', 'message', 'transfersTaking.created_at')
                 ->orderBy('transfersTaking.id', 'desc')
@@ -185,8 +185,8 @@ class TransferTakingController extends Controller{
         try{
           $request->flash();
           $items = TransferTaking::join('users','users.id','=','transfersTaking.idUser')
-                    ->join('SAPHOMOLOGACAO.dbo.OWHS as T1', 'T1.WhsCode', '=', 'transfersTaking.fromWarehouse')
-                    ->join('SAPHOMOLOGACAO.dbo.OWHS as T2', 'T2.WhsCode', '=', 'transfersTaking.toWarehouse')
+                    ->join('BRASFRUT.dbo.OWHS as T1', 'T1.WhsCode', '=', 'transfersTaking.fromWarehouse')
+                    ->join('BRASFRUT.dbo.OWHS as T2', 'T2.WhsCode', '=', 'transfersTaking.toWarehouse')
                     ->select('transfersTaking.id', 'users.name', 'codSAPTransf', 'codWEBTransf', 'status', 'docDate', 'taxDate', 'code', 
                     'codSAP', 'T1.WhsName as fromWarehouse', 'T2.WhsName as toWarehouse', 'comments', 'is_locked', 'message', 'transfersTaking.created_at');
 

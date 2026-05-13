@@ -881,10 +881,10 @@ class PurchaseController extends Controller
         $purchase_order = DB::SELECT("SELECT T0.itemCode, T0.itemName, T0.quantity, T0.price, T0.lineSum, T0.codProject,
                             T2.OcrName as distrRule, T3.OcrName as distriRule2, T4.WhsName as wareHouseCode
                         FROM purchase_order_items T0
-                        LEFT JOIN SAPHOMOLOGACAO.dbo.OITM T1 ON T0.itemCode = T1.ItemCode
-                        LEFT JOIN SAPHOMOLOGACAO.dbo.OOCR T2 ON T0.costCenter = T2.OcrCode
-                        LEFT JOIN SAPHOMOLOGACAO.dbo.OOCR T3 ON T0.costCenter2 = T3.OcrCode
-                        LEFT JOIN SAPHOMOLOGACAO.dbo.OWHS T4 ON T0.wareHouseCode = T4.WhsCode
+                        LEFT JOIN BRASFRUT.dbo.OITM T1 ON T0.itemCode = T1.ItemCode
+                        LEFT JOIN BRASFRUT.dbo.OOCR T2 ON T0.costCenter = T2.OcrCode
+                        LEFT JOIN BRASFRUT.dbo.OOCR T3 ON T0.costCenter2 = T3.OcrCode
+                        LEFT JOIN BRASFRUT.dbo.OWHS T4 ON T0.wareHouseCode = T4.WhsCode
                         WHERE T0.idPurchaseOrders = '{$id}'");
         return json_encode([
             'data' => $purchase_order

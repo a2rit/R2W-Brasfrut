@@ -715,8 +715,8 @@ function getBestPriceQuotationItem($id){
                                'purchase_quotation_items.priceP1', 'purchase_quotation_items.totalP1', 'OCRD.CardCode', 'OCRD.CardName',
                                'OCTG.PymntGroup')
                       ->join('purchase_quotation', 'purchase_quotation.id', '=', 'purchase_quotation_items.idPurchaseQuotation')
-                      ->leftJoin('SAPHOMOLOGACAO.dbo.OCRD', 'OCRD.CardCode', '=', 'purchase_quotation.provider1')
-                      ->leftJoin('SAPHOMOLOGACAO.dbo.OCTG', 'OCTG.GroupNum', '=', 'purchase_quotation.paymentTerms')
+                      ->leftJoin('BRASFRUT.dbo.OCRD', 'OCRD.CardCode', '=', 'purchase_quotation.provider1')
+                      ->leftJoin('BRASFRUT.dbo.OCTG', 'OCTG.GroupNum', '=', 'purchase_quotation.paymentTerms')
                       ->get();
                       
   $best_price = ['qtd'=>0.00,'price'=>999999999.00, 'index'=>0]; // se mudar da bug

@@ -29,8 +29,8 @@ class TransferController extends Controller{
     public function index(){
 
       $items = Transfer::join('users', 'users.id', '=', 'transfers.idUser')
-                ->join('SAPHOMOLOGACAO.dbo.OWHS as T1', 'T1.WhsCode', '=', 'transfers.fromWarehouse')
-                ->join('SAPHOMOLOGACAO.dbo.OWHS as T2', 'T2.WhsCode', '=', 'transfers.toWarehouse')
+                ->join('BRASFRUT.dbo.OWHS as T1', 'T1.WhsCode', '=', 'transfers.fromWarehouse')
+                ->join('BRASFRUT.dbo.OWHS as T2', 'T2.WhsCode', '=', 'transfers.toWarehouse')
                 ->select('transfers.id','users.name','docDate','taxDate','code','codSAP','T1.WhsName as fromWarehouse', 'T2.WhsName as toWarehouse','comments','is_locked','message', 'status')
                 ->orderBy('transfers.id', 'desc')
                 ->paginate(30);
@@ -128,8 +128,8 @@ class TransferController extends Controller{
         $request->flash();
 
         $items = Transfer::join('users', 'users.id', '=', 'transfers.idUser')
-                  ->join('SAPHOMOLOGACAO.dbo.OWHS as T1', 'T1.WhsCode', '=', 'transfers.fromWarehouse')
-                  ->join('SAPHOMOLOGACAO.dbo.OWHS as T2', 'T2.WhsCode', '=', 'transfers.toWarehouse')
+                  ->join('BRASFRUT.dbo.OWHS as T1', 'T1.WhsCode', '=', 'transfers.fromWarehouse')
+                  ->join('BRASFRUT.dbo.OWHS as T2', 'T2.WhsCode', '=', 'transfers.toWarehouse')
                   ->select('transfers.id','users.name','docDate','taxDate','code','codSAP','T1.WhsName as fromWarehouse', 'T2.WhsName as toWarehouse','comments','is_locked','message', 'status');
                   
         if (!is_null($request->codSAP)) {

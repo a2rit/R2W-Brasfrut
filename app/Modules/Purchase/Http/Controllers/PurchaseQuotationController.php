@@ -45,11 +45,11 @@ class PurchaseQuotationController extends Controller
             'purchase_quotation.id', 'purchase_quotation.code', 'purchase_quotation.codSAP', 'purchase_quotation.idRequest',
             'purchase_quotation.data_i as data_i', 'purchase_quotation.status', 'purchase_quotation.id_solicitante',
             'purchase_quotation.provider1', 'OCRD.CardName as provider1Name')
-            ->leftJoin('SAPHOMOLOGACAO.dbo.OCRD', 'OCRD.CardCode', '=', 'purchase_quotation.provider1');
+            ->leftJoin('BRASFRUT.dbo.OCRD', 'OCRD.CardCode', '=', 'purchase_quotation.provider1');
 
 
         $buscaGraph = PurchaseQuotation::select('purchase_quotation.status')
-            ->leftJoin('SAPHOMOLOGACAO.dbo.OCRD', 'OCRD.CardCode', '=', 'purchase_quotation.provider1')
+            ->leftJoin('BRASFRUT.dbo.OCRD', 'OCRD.CardCode', '=', 'purchase_quotation.provider1')
             ->whereBetween('data_i', [Carbon::now()->subYear(), Carbon::now()])->get();
         $busca = $busca->orderBy('purchase_quotation.id', 'desc')->paginate(30);
 
@@ -89,7 +89,7 @@ class PurchaseQuotationController extends Controller
                 'purchase_quotation.data_i as data_i','purchase_quotation.status','purchase_quotation.id_solicitante',
                 'purchase_quotation.provider1', 'purchase_quotation.provider2', 'purchase_quotation.provider3',
                 'purchase_quotation.provider4', 'purchase_quotation.provider5', 'OCRD.CardName as provider1Name')
-                ->leftJoin('SAPHOMOLOGACAO.dbo.OCRD', 'OCRD.CardCode', '=', 'purchase_quotation.provider1');            
+                ->leftJoin('BRASFRUT.dbo.OCRD', 'OCRD.CardCode', '=', 'purchase_quotation.provider1');            
 
             if (!is_null($request->code)) {
                 $data->where('purchase_quotation.code','like', "%$request->code%");
@@ -232,7 +232,7 @@ class PurchaseQuotationController extends Controller
                         'purchase_quotation.id_order', 'purchase_quotation.code_order', 'purchase_quotation.isRequest',
                         'purchase_quotation.idRequest', 'paymentTerms', 'purchase_quotation.parent', 'purchase_requests.code as codeRequest',
                         'OCRD.CardName as provider1Name')
-                    ->leftJoin('SAPHOMOLOGACAO.dbo.OCRD', 'OCRD.CardCode', '=', 'purchase_quotation.provider1')
+                    ->leftJoin('BRASFRUT.dbo.OCRD', 'OCRD.CardCode', '=', 'purchase_quotation.provider1')
                     ->where('purchase_quotation.id', '=', $id)
                     ->first();
         

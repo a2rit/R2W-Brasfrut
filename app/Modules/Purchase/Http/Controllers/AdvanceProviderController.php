@@ -40,11 +40,11 @@ class AdvanceProviderController extends Controller
             "users.name",
             "docTotal"
         )
-        ->join('SAPHOMOLOGACAO.dbo.OCRD', 'OCRD.CardCode', '=', 'advance_provider.cardCode')
+        ->join('BRASFRUT.dbo.OCRD', 'OCRD.CardCode', '=', 'advance_provider.cardCode')
         ->join('users', 'advance_provider.idUser', '=', 'users.id');
         
         $buscaGraph = AdvanceProvider::select('status')
-            ->join('SAPHOMOLOGACAO.dbo.OCRD', 'OCRD.CardCode', '=', 'advance_provider.cardCode')
+            ->join('BRASFRUT.dbo.OCRD', 'OCRD.CardCode', '=', 'advance_provider.cardCode')
             ->join('users', 'advance_provider.idUser', '=', 'users.id')
             ->whereBetween('taxDate', [Carbon::now()->subYear(), Carbon::now()])->get();
         $ODPO = new AdvanceProvider;
@@ -66,7 +66,7 @@ class AdvanceProviderController extends Controller
                     'is_locked',
                     'code',
                     'users.name')
-                ->join('SAPHOMOLOGACAO.dbo.OCRD', 'OCRD.CardCode', '=', 'advance_provider.cardCode')
+                ->join('BRASFRUT.dbo.OCRD', 'OCRD.CardCode', '=', 'advance_provider.cardCode')
                 ->join('users', 'advance_provider.idUser', '=', 'users.id');
 
           if($request->get('cpf_cnpj')) {
@@ -146,7 +146,7 @@ class AdvanceProviderController extends Controller
                 'veiculo',
                 'ticket'
             )
-            ->leftJoin('SAPHOMOLOGACAO.dbo.OCRD as T2', 'T2.CardCode', '=', 'advance_provider.cardCode')
+            ->leftJoin('BRASFRUT.dbo.OCRD as T2', 'T2.CardCode', '=', 'advance_provider.cardCode')
             ->join('users', 'advance_provider.idUser', '=', 'users.id')
             ->find($id);
 

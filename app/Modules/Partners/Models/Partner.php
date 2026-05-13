@@ -555,6 +555,6 @@ class Partner extends Model
                 ->whereDate('endDate', '>=', date('Y-m-d'))
                 ->where('residualAmount', '>', 0)
                 ->get();
-        //return DB::SELECT("SELECT * FROM SAPHOMOLOGACAO.dbo.[@A2R_PNCONTRATOS] WHERE U_A2R_CODPN = :codPN AND U_A2R_DTINICIO <= '".date('Y-m-d')."' AND U_A2R_DTFIM >= '".date('Y-m-d')."' AND ", ['codPN' => $codPN]);
+        //return DB::SELECT("SELECT * FROM BRASFRUT.dbo.[@A2R_PNCONTRATOS] WHERE U_A2R_CODPN = :codPN AND U_A2R_DTINICIO <= '".date('Y-m-d')."' AND U_A2R_DTFIM >= '".date('Y-m-d')."' AND ", ['codPN' => $codPN]);
     }
 }

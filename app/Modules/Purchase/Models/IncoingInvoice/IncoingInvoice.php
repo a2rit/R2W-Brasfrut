@@ -940,7 +940,7 @@ class IncoingInvoice extends Model
     public function getAdvancePayments($cardCode)
     {
         $sap = new Company(false);
-        $query = "SELECT T0.DocNum, T0.Comments, T0.DocDate, T0.DocTotal, T0.DpmAppl FROM SAPHOMOLOGACAO.dbo.ODPO T0 
+        $query = "SELECT T0.DocNum, T0.Comments, T0.DocDate, T0.DocTotal, T0.DpmAppl FROM BRASFRUT.dbo.ODPO T0 
                     WHERE T0.[CardCode] = :cardCode
                     AND T0.[CANCELED] = 'N'
                     AND T0.[DpmStatus] = 'O'

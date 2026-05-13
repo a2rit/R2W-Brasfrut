@@ -319,10 +319,10 @@ class PurchaseRequestController extends Controller
         $producs = DB::SELECT("SELECT T0.itemCode, T0.quantity, T0.quantityPendente, T0.project, T1.ItemName, 
                             T2.OcrName as distrRule, T3.OcrName as distriRule2, T4.WhsName as wareHouseCode
                         FROM purchase_request_items T0
-                        LEFT JOIN SAPHOMOLOGACAO.dbo.OITM T1 ON T0.itemCode = T1.ItemCode
-                        LEFT JOIN SAPHOMOLOGACAO.dbo.OOCR T2 ON T0.distrRule = T2.OcrCode
-                        LEFT JOIN SAPHOMOLOGACAO.dbo.OOCR T3 ON T0.distriRule2 = T3.OcrCode
-                        LEFT JOIN SAPHOMOLOGACAO.dbo.OWHS T4 ON T0.wareHouseCode = T4.WhsCode
+                        LEFT JOIN BRASFRUT.dbo.OITM T1 ON T0.itemCode = T1.ItemCode
+                        LEFT JOIN BRASFRUT.dbo.OOCR T2 ON T0.distrRule = T2.OcrCode
+                        LEFT JOIN BRASFRUT.dbo.OOCR T3 ON T0.distriRule2 = T3.OcrCode
+                        LEFT JOIN BRASFRUT.dbo.OWHS T4 ON T0.wareHouseCode = T4.WhsCode
                         WHERE T0.idPurchaseRequest = '{$id}'");
         return response()->json([
             "data" => $producs
