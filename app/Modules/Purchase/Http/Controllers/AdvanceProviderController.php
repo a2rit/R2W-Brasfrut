@@ -159,8 +159,14 @@ class AdvanceProviderController extends Controller
 
     public function create()
     {
-        $item = Items::where('itemCode', 'AD00001')->first();
+        $item = Items::where('itemCode', 'AD00001')
+            ->where('project', 'SEM PROJETOS')
+            ->where('distrRule', '9.6')
+            ->orderBy('id', 'desc')
+            ->first();
+        
         $body = [$item];
+        
         return view("purchase::advanceProvider.create", compact('body'), $this->options());
     }
 
