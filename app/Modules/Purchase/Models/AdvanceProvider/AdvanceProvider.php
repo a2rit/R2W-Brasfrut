@@ -26,7 +26,7 @@ class AdvanceProvider extends Model
     const STATUS_REFUND = 2;
 
     const TEXT_STATUS = [
-        '2' => "ESTORNADO",
+        '2' => "CANCELADO",
         '1' => 'ABERTO',
         '0' => 'FECHADO'
     ];

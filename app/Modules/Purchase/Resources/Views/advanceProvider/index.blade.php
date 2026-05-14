@@ -99,6 +99,7 @@
                   <label>Status</Label>
                   <select class="form-control selectpicker" name="status">
                     <option value=''>Selecione</option>
+                    <option value='2' @if((Integer)old('status') === $ODPO::STATUS_REFUND) selected @endif>Cancelado</option>
                     <option value='1' @if((Integer)old('status') === $ODPO::STATUS_OPEN) selected @endif>Aberto</option>
                     <option value='0' @if((Integer)old('status') === $ODPO::STATUS_CLOSE && !empty(old('status'))) selected @endif>Fechado</option>
                   </select>
@@ -177,7 +178,7 @@
                   @endif
                   @if ($value->status == 2)
                     <a href="{{ route('purchase.advance.provider.read', $value->id) }}"
-                      class="btn btn-warning btn-sm w-100">ESTORNADO
+                      class="btn btn-danger btn-sm w-100">CANCELADO
                     </a>
                   @endif
                 </td>
