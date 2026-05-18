@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\DB;
 use Litiano\Sap\Company;
 use App\LogsError;
 use App\Scheduling;
+use Illuminate\Support\Facades\Log;
 
 class AdvanceProviderToSAP implements ShouldQueue
 {
@@ -44,6 +45,7 @@ class AdvanceProviderToSAP implements ShouldQueue
         $obj = new AdvanceProvider();
         $obj->saveInSAP($this->oapt);
       }catch (\Throwable $e) {
+        Log::error($e->getFile() . '|' . $e->getLine() . '|' .  $e->getMessage() . '|' . $e->getTraceAsString());
         $logsErrors = new LogsError();
         $logsErrors->saveInDB('AP0005', $e->getFile().' | '.$e->getLine(),$e->getMessage());
         AdvanceProviderToSAP::dispatch($this->oapt)
