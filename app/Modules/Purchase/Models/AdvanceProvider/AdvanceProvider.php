@@ -16,6 +16,7 @@ use App\Upload;
 use App\Jobs\LinkUploadsInDocument;
 use App\Jobs\Queue;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Support\Facades\Log;
 
 class AdvanceProvider extends Model
 {
@@ -215,8 +216,14 @@ class AdvanceProvider extends Model
             //$ap->UserFields->fields->Item("U_R2W_CODE")->value =  $obj->code;
             $ap->UserFields->fields->Item("U_R2W_USERNAME")->value = getUserName($obj->idUser);
             $ap->UserFields->fields->Item("U_R2W_CODE")->value = $obj->code;
-            $ap->UserFields->fields->Item("U_R2W_Veiculo")->value = $obj->veiculo;
-            $ap->UserFields->fields->Item("U_NTicket")->value = $obj->ticket;
+            
+            if ($obj->veiculo) {
+                $ap->UserFields->fields->Item("U_R2W_Veiculo")->value = $obj->veiculo;
+            }
+            
+            if ($obj->ticket) {
+                $ap->UserFields->fields->Item("U_NTicket")->value = $obj->ticket;
+            }
 
             if ($update) {
                 $ret = $ap->Update();
@@ -245,6 +252,7 @@ class AdvanceProvider extends Model
             }
             return;
         } catch (\Throwable $e) {
+            Log::error($e->getFile() . '|' . $e->getLine() . '|' .  $e->getMessage() . '|' . $e->getTraceAsString());
             $logsErrors = new LogsError();
             $logsErrors->saveInDB('APE0003', $e->getFile() . '|' . $e->getLine(), $e->getMessage());
             throw new \Exception($e->getMessage());

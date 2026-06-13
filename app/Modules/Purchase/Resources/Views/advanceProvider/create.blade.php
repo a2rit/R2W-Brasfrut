@@ -55,11 +55,11 @@
           </div>
           <div class="col-md-2">
             <label>Veículo</label>
-            <input type="text" name="veiculo" @if(isset($head)) value="{{ $head->veiculo }}"@endif class="form-control">
+            <input type="text" name="veiculo" id="veiculo" @if(isset($head)) value="{{ $head->veiculo }}"@endif class="form-control">
           </div>
           <div class="col-md-2">
             <label>N° do Ticket</label>
-            <input type="number" name="ticket" @if(isset($head)) value="{{ $head->ticket }}"@endif class="form-control">
+            <input type="number" name="ticket" id="ticket" @if(isset($head)) value="{{ $head->ticket }}"@endif class="form-control">
           </div>
         </div>
         <div class="row mt-2">
@@ -663,7 +663,7 @@
 
         @if ($head->status == $head::STATUS_OPEN)
           var form = $('#needs-validation');
-          form.find('input').not('#dataVencimento').not('input[type="file"]').each(function(i, item) {
+          form.find('input').not('#dataVencimento').not('#veiculo').not('#ticket').not('input[type="file"]').each(function(i, item) {
             $(item).prop('readonly', true);
             $(item).addClass('locked');
           });
